@@ -60,7 +60,7 @@ const App: React.FC = () => {
               </div>
             </div>
             <div className="flex flex-col">
-              <span className="text-2xl font-black tracking-tight bg-gradient-to-r from-white via-blue-100 to-blue-200 bg-clip-text text-transparent">SAKSH<span className="bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text">AI</span></span>
+              <span className="text-2xl font-black tracking-tight bg-gradient-to-r from-white via-blue-100 to-blue-200 bg-clip-text text-transparent">Saaksh<span className="bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text">AI</span></span>
               <span className="text-[10px] font-semibold text-slate-500 uppercase tracking-widest -mt-1">Intelligence Platform</span>
             </div>
           </div>
@@ -255,7 +255,7 @@ const App: React.FC = () => {
               <Shield size={18} className="text-blue-400" />
             </div>
             <div>
-              <span className="text-sm font-bold tracking-tight text-slate-300">SAKSH AI Intelligence Platform</span>
+              <span className="text-sm font-bold tracking-tight text-slate-300">Saaksh AI Intelligence Platform</span>
               <span className="text-xs text-slate-600 block">© 2026 All rights reserved</span>
             </div>
           </div>
