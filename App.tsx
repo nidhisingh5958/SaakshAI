@@ -12,13 +12,18 @@ import {
   History,
   Settings,
   Info,
-  AlertTriangle
+  AlertTriangle,
+  Radio
 } from 'lucide-react';
 import { analyzeContent } from './services/geminiService';
 import { AnalysisResult, AnalysisStatus } from './types';
 import { Dashboard } from './components/Dashboard';
+import { RedditMonitor } from './components/RedditMonitor';
+
+type TabType = 'intelligence' | 'reddit';
 
 const App: React.FC = () => {
+  const [activeTab, setActiveTab] = useState<TabType>('intelligence');
   const [inputText, setInputText] = useState('');
   const [status, setStatus] = useState<AnalysisStatus>('idle');
   const [result, setResult] = useState<AnalysisResult | null>(null);
@@ -41,6 +46,7 @@ const App: React.FC = () => {
   };
 
   const reset = () => {
+    setActiveTab('intelligence');
     setStatus('idle');
     setResult(null);
     setInputText('');
@@ -66,9 +72,32 @@ const App: React.FC = () => {
           </div>
           
           <div className="hidden md:flex items-center gap-8">
-            <nav className="flex items-center gap-1">
+            <n<button 
+                onClick={() => { setActiveTab('intelligence'); reset(); }} 
+                className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 cursor-pointer ${
+                  activeTab === 'intelligence' 
+                    ? 'text-white bg-slate-800/80 border border-slate-700' 
+                    : 'text-slate-400 hover:text-white hover:bg-slate-800/50'
+                }`}
+              >
+                Intelligence
+              </button>
+              <button 
+                onClick={() => { setActiveTab('reddit'); setResult(null); setStatus('idle'); }} 
+                className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 cursor-pointer flex items-center gap-2 ${
+                  activeTab === 'reddit' 
+                    ? 'text-white bg-slate-800/80 border border-slate-700' 
+                    : 'text-slate-400 hover:text-white hover:bg-slate-800/50'
+         activeTab === 'reddit' ? (
+          <RedditMonitor />
+        ) :        }`}
+              >
+                <Radio size={16} />
+                Reddit Monitor
+              </button>
+              {[ items-center gap-1">
               {['Intelligence', 'RAG Stream', 'OSINT', 'API'].map((item) => (
-                <a key={item} href="#" className="px-4 py-2 text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800/50 rounded-lg transition-all duration-200">{item}</a>
+                <button key={item} onClick={reset} className="px-4 py-2 text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800/50 rounded-lg transition-all duration-200 cursor-pointer">{item}</button>
               ))}
             </nav>
             <div className="h-8 w-px bg-gradient-to-b from-transparent via-slate-700 to-transparent" />

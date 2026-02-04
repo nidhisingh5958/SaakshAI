@@ -45,3 +45,65 @@ export interface AnalysisResult {
 }
 
 export type AnalysisStatus = 'idle' | 'processing' | 'completed' | 'error';
+
+// Reddit Integration Types
+export interface RedditPost {
+  id: string;
+  subreddit: string;
+  title: string;
+  selftext: string;
+  author: string;
+  score: number;
+  upvoteRatio: number;
+  numComments: number;
+  created: number;
+  url: string;
+  permalink: string;
+}
+
+export interface RedditComment {
+  id: string;
+  author: string;
+  body: string;
+  score: number;
+  created: number;
+}
+
+export interface RedditAnalysisResult {
+  postId: string;
+  subreddit: string;
+  title: string;
+  postText: string;
+  topComments: RedditComment[];
+  credibilityScore: number;
+  fakeRiskScore: number;
+  threatLevel: 'low' | 'medium' | 'high' | 'critical';
+  linguisticRisks: LinguisticIndicator[];
+  emotionalTone: {
+    anger: number;
+    fear: number;
+    urgency: number;
+    neutrality: number;
+    joy: number;
+  };
+  viralityRisk: {
+    score: number;
+    triggers: string[];
+    potentialImpact: string;
+  };
+  narrativeClusterId?: string;
+  analyzedAt: number;
+  postUrl: string;
+}
+
+export interface NarrativeCluster {
+  id: string;
+  subreddit: string;
+  theme: string;
+  postIds: string[];
+  averageFakeRisk: number;
+  averageThreatLevel: 'low' | 'medium' | 'high' | 'critical';
+  detectedAt: number;
+}
+
+export type RedditMonitorStatus = 'idle' | 'fetching' | 'analyzing' | 'completed' | 'error';
