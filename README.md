@@ -127,26 +127,27 @@ Returns detailed metrics:
 ├── App.tsx                      # Main application component with tab navigation
 ├── index.tsx                    # React entry point
 ├── index.html                   # HTML template
-├── types.ts                     # TypeScript interfaces (includes Reddit types)
+├── types.ts                     # TypeScript interfaces (Reddit & YouTube types)
 ├── metadata.json                # Project metadata
 ├── package.json                 # Dependencies & scripts
 ├── tsconfig.json                # TypeScript configuration
 ├── vite.config.ts              # Vite configuration
+├── .env.example                 # Environment configuration template
+├── YOUTUBE_FEATURE.md           # YouTube Monitor documentation
+├── REDDIT_FEATURE.md            # Reddit Monitor documentation
 ├── components/
 │   ├── Dashboard.tsx            # Results visualization dashboard
-│   └── RedditMonitor.tsx        # Reddit monitoring interface
+│   ├── RedditMonitor.tsx        # Reddit monitoring interface
+│   └── YouTubeMonitor.tsx       # YouTube monitoring interface
 └── services/
     ├── geminiService.ts         # AI analysis service
-    └── redditService.ts         # Reddit API integration service
+    ├── redditService.ts         # Reddit API integration
+    └── youtubeService.ts        # YouTube API integration
 ```
 
 ---
 
-## 🚦 Getting Started
-
-### Prerequisites
-- Node.js installed
-- Gemini API Key (get it from [Google AI Studio](https://makersuite.google.com/app/apikey))
+- YouTube Data API Key (optional, required for YouTube Monitor)
 
 ### Installation & Running
 
@@ -154,9 +155,13 @@ Returns detailed metrics:
 # 1. Install dependencies
 npm install
 
-# 2. Set API Key
-# Create .env.local file in root and add:
+# 2. Configure API Keys
+# Copy the environment template
+cp .env.example .env
+
+# Edit .env and add your keys:
 # GEMINI_API_KEY=your_gemini_api_key_here
+# VITE_YOUTUBE_API_KEY=your_youtube_api_key_here (optional)
 
 # 3. Start development server
 npm run dev
@@ -168,7 +173,37 @@ npm run build
 npm run preview
 ```
 
+### Getting YouTube API Key
+
+1. Go to [Google Cloud Console](https://console.cloud.google.com/)
+2. Create a new project or select an existing one
+3. Enable **YouTube Data API v3**
+4. Navigate to **Credentials** → **Create Credentials** → **API Key**
+5. Copy your API key and add to `.env` file. Build for production
+npm run build
+
+# 5. Preview production build
+npm run preview
+```
+
 ### Using the Reddit Monitor
+
+### Using the YouTube Monitor
+
+1. Ensure you have configured `VITE_YOUTUBE_API_KEY` in your `.env` file
+2. Click on the **"YouTube Monitor"** tab in the navigation
+3. Enter a **keyword or topic** (e.g., `election fraud`, `miracle cure`, `breaking news`)
+4. Click **"Analyze Videos"**
+5. Wait for videos to be fetched and analyzed (progress shown)
+6. Review the **Video Risk Table** with thumbnails, scores, and threat levels
+7. Click any video card to see:
+   - Detailed emotional tone analysis
+   - Linguistic risk indicators
+   - Top comments with like counts
+   - Suspicious content highlights
+8. Watch for **Narrative Alert Banners** when multiple videos show similar risky patterns
+
+**Note**: YouTube Monitor requires a valid YouTube Data API v3 key. See [YOUTUBE_FEATURE.md](YOUTUBE_FEATURE.md) for detailed documentation.
 
 1. Click on the **"Reddit Monitor"** tab in the navigation
 2. Enter either:
@@ -182,6 +217,59 @@ npm run preview
 7. Watch for **Narrative Alert Banners** indicating coordinated misinformation
 
 **Note**: The Reddit integration uses Reddit's public JSON API (no OAuth required), so no Reddit API credentials are needed.
+
+### 6. **YouTube Misinformation Monitoring Module** 🆕
+Cross-platform video content analysis for detecting misinformation in YouTube videos:
+
+#### **Video Search & Intelligence**
+- Search YouTube by keyword/topic
+- Fetches video metadata (title, description, channel, views, comments)
+- Supports sorting by relevance, date, view count, or rating
+- Analyzes up to 50 videos per search
+
+#### **Comment Analysis**
+- Fetches top comments (configurable, default 20-50)
+- Detects emotional escalation in comment sections
+- Identifies manipulation tactics in discussions
+- Tracks coordinated narratives across comments
+
+#### **Video Risk Assessment**
+- Comprehensive analysis of video titles and descriptions
+- Credibility scoring for video content
+- Fake risk detection for misleading claims
+- Threat level classification (low/medium/high/critical)
+- Linguistic risk identification (sensationalism, clickbait, fear-mongering)
+
+#### **Narrative Clustering**
+- Automatically groups videos with similar risky patterns
+- Detects emerging misinformation trends across multiple videos
+- Flags coordinated narrative campaigns
+- Tracks theme patterns and manipulation tactics
+
+#### **Performance & Compliance**
+- Batch processing (5 videos at a time)
+- Results caching with 5-minute TTL
+- Rate limiting and retry logic
+- Full compliance with YouTube Data API v3 Terms of Service
+- Official API integration (no scraping)
+
+#### **Interactive YouTube Monitor UI**
+- **Search Panel**: Input keywords or topics to analyze
+- **Narrative Alert Banner**: Visual warnings for detected trend patterns
+- **Video Risk Table**: Sortable display of analyzed videos with:
+  - Video thumbnails with view counters
+  - Risk scores (credibility, fake risk, virality)
+  - Threat level badges
+  - Linguistic risk tags
+  - Cluster indicators
+- **Video Detail Panel**: Deep analysis including:
+  - Emotional tone radar chart
+  - Linguistic risk breakdown
+  - Top comments with engagement metrics
+  - Suspicious content highlights
+  - Direct YouTube link
+
+**Setup Required**: YouTube Data API v3 key (see setup instructions below)
 
 ---
 

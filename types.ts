@@ -107,3 +107,75 @@ export interface NarrativeCluster {
 }
 
 export type RedditMonitorStatus = 'idle' | 'fetching' | 'analyzing' | 'completed' | 'error';
+
+// YouTube Integration Types
+export interface YouTubeVideo {
+  id: string;
+  title: string;
+  description: string;
+  channelId: string;
+  channelTitle: string;
+  publishedAt: string;
+  viewCount: number;
+  likeCount: number;
+  commentCount: number;
+  thumbnailUrl: string;
+  duration: string;
+  tags?: string[];
+}
+
+export interface YouTubeComment {
+  id: string;
+  authorDisplayName: string;
+  textDisplay: string;
+  likeCount: number;
+  publishedAt: string;
+  videoId: string;
+}
+
+export interface YouTubeAnalysisResult {
+  videoId: string;
+  title: string;
+  description: string;
+  channelTitle: string;
+  publishedAt: string;
+  viewCount: number;
+  commentCount: number;
+  thumbnailUrl: string;
+  topComments: YouTubeComment[];
+  credibilityScore: number;
+  fakeRiskScore: number;
+  threatLevel: 'low' | 'medium' | 'high' | 'critical';
+  linguisticRisks: LinguisticIndicator[];
+  emotionalTone: {
+    anger: number;
+    fear: number;
+    urgency: number;
+    neutrality: number;
+    joy: number;
+  };
+  viralityRisk: {
+    score: number;
+    triggers: string[];
+    potentialImpact: string;
+  };
+  narrativeClusterId?: string;
+  analyzedAt: number;
+  videoUrl: string;
+  highlightedText: Array<{
+    text: string;
+    type: 'suspicious' | 'verified' | 'neutral';
+    tooltip?: string;
+  }>;
+}
+
+export interface YouTubeNarrativeCluster {
+  id: string;
+  theme: string;
+  videoIds: string[];
+  averageFakeRisk: number;
+  averageThreatLevel: 'low' | 'medium' | 'high' | 'critical';
+  detectedAt: number;
+}
+
+export type YouTubeMonitorStatus = 'idle' | 'fetching' | 'analyzing' | 'completed' | 'error';

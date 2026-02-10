@@ -13,14 +13,16 @@ import {
   Settings,
   Info,
   AlertTriangle,
-  Radio
+  Radio,
+  Youtube
 } from 'lucide-react';
 import { analyzeContent } from './services/geminiService';
 import { AnalysisResult, AnalysisStatus } from './types';
 import { Dashboard } from './components/Dashboard';
 import { RedditMonitor } from './components/RedditMonitor';
+import { YouTubeMonitor } from './components/YouTubeMonitor';
 
-type TabType = 'intelligence' | 'reddit';
+type TabType = 'intelligence' | 'reddit' | 'youtube';
 
 const App: React.FC = () => {
   const [activeTab, setActiveTab] = useState<TabType>('intelligence');
@@ -72,7 +74,8 @@ const App: React.FC = () => {
           </div>
           
           <div className="hidden md:flex items-center gap-8">
-            <n<button 
+            <nav className="flex items-center gap-1">
+              <button 
                 onClick={() => { setActiveTab('intelligence'); reset(); }} 
                 className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 cursor-pointer ${
                   activeTab === 'intelligence' 
@@ -88,17 +91,22 @@ const App: React.FC = () => {
                   activeTab === 'reddit' 
                     ? 'text-white bg-slate-800/80 border border-slate-700' 
                     : 'text-slate-400 hover:text-white hover:bg-slate-800/50'
-         activeTab === 'reddit' ? (
-          <RedditMonitor />
-        ) :        }`}
+                }`}
               >
                 <Radio size={16} />
                 Reddit Monitor
               </button>
-              {[ items-center gap-1">
-              {['Intelligence', 'RAG Stream', 'OSINT', 'API'].map((item) => (
-                <button key={item} onClick={reset} className="px-4 py-2 text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800/50 rounded-lg transition-all duration-200 cursor-pointer">{item}</button>
-              ))}
+              <button 
+                onClick={() => { setActiveTab('youtube'); setResult(null); setStatus('idle'); }} 
+                className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 cursor-pointer flex items-center gap-2 ${
+                  activeTab === 'youtube' 
+                    ? 'text-white bg-slate-800/80 border border-slate-700' 
+                    : 'text-slate-400 hover:text-white hover:bg-slate-800/50'
+                }`}
+              >
+                <Youtube size={16} />
+                YouTube Monitor
+              </button>
             </nav>
             <div className="h-8 w-px bg-gradient-to-b from-transparent via-slate-700 to-transparent" />
             <button className="p-2 text-slate-400 hover:text-white hover:bg-slate-800/50 rounded-lg transition-all"><Settings size={20} /></button>
@@ -112,7 +120,11 @@ const App: React.FC = () => {
 
       {/* Main Content */}
       <main className="flex-1 max-w-7xl mx-auto w-full px-4 py-8">
-        {status === 'idle' || status === 'error' ? (
+        {activeTab === 'reddit' ? (
+          <RedditMonitor />
+        ) : activeTab === 'youtube' ? (
+          <YouTubeMonitor />
+        ) : status === 'idle' || status === 'error' ? (
           <div className="max-w-4xl mx-auto space-y-12 pt-16">
             <div className="text-center space-y-6">
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-500/10 border border-blue-500/20 rounded-full text-blue-400 text-sm font-semibold mb-4 animate-in fade-in duration-500">
