@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root {
+  --color-bg: #080B14;
+  --color-surface-primary: #0E1320;
+  --color-surface-secondary: #121827;
+  --color-surface-interactive: #182033;
+  --color-text-primary: #F4F5F8;
+  --color-text-secondary: #8992A7;
+  --color-text-muted: #5F687C;
+  --color-intel-blue: #5B8CFF;
+  --color-intel-violet: #9B6DFF;
+  --color-cyan: #38D9FF;
+  --color-verified: #35D49A;
+  --color-suspicious: #FFB84D;
+  --color-high-risk: #FF5F6D;
+  --color-border-subtle: rgba(255, 255, 255, 0.06);
+  --color-border-moderate: rgba(255, 255, 255, 0.12);
+  --color-border-active: rgba(91, 140, 255, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.font-mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #080B14;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #121827;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #182033;
+}
+
+/* Global utility classes matching Phase 1 Design System */
+.bg-canvas {
+  background-color: #080B14;
+}
+
+.bg-surface-primary {
+  background-color: #0E1320;
+}
+
+.bg-surface-secondary {
+  background-color: #121827;
+}
+
+.bg-surface-interactive {
+  background-color: #182033;
+}
+
+.border-subtle {
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+.border-moderate {
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.border-intel-active {
+  border-color: rgba(91, 140, 255, 0.35);
+}
+
+.text-primary-intel {
+  color: #F4F5F8;
+}
+
+.text-secondary-intel {
+  color: #8992A7;
+}
+
+.text-muted-intel {
+  color: #5F687C;
+}
+
+.text-intel-blue {
+  color: #5B8CFF;
+}
+
+.text-intel-violet {
+  color: #9B6DFF;
+}
+
+.text-verified {
+  color: #35D49A;
+}
+
+.text-suspicious {
+  color: #FFB84D;
+}
+
+.text-high-risk {
+  color: #FF5F6D;
+}
+
+/* Motion system & accessibility */
+.animate-fade-in {
+  animation: fadeIn 240ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-in,
+  .animate-pulse,
+  .animate-spin {
+    animation: none !important;
+    transition: none !important;
+  }
+}
