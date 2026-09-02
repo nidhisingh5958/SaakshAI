@@ -17,27 +17,32 @@ export const Input: React.FC<InputProps> = ({
   const inputId = id || (label ? label.toLowerCase().replace(/\s+/g, '-') : undefined);
 
   return (
-    <div className="flex flex-col gap-1.5 w-full">
+    <div className="space-y-1.5 w-full">
       {label && (
-        <label htmlFor={inputId} className="text-xs font-mono font-medium text-[#8992A7] uppercase tracking-wider">
+        <label 
+          htmlFor={inputId}
+          className="block text-xs font-medium text-[#5A4434]"
+        >
           {label}
         </label>
       )}
-      <div className="relative flex items-center">
+      <div className="relative flex items-center w-full">
         {icon && (
-          <span className="absolute left-3 text-[#5F687C] pointer-events-none flex items-center justify-center">
+          <span className="absolute left-3.5 text-[#B9A78D] pointer-events-none">
             {icon}
           </span>
         )}
         <input
           id={inputId}
-          className={`w-full bg-[#0E1320] border border-white/10 rounded-lg py-2.5 px-3.5 text-sm text-[#F4F5F8] placeholder-[#5F687C] focus:outline-none focus:border-[#5B8CFF]/60 focus:ring-1 focus:ring-[#5B8CFF]/60 transition-colors ${
+          className={`w-full bg-[#FFFDF9] border border-[#E3D5C0] rounded-xl px-4 py-2.5 text-sm text-[#0D0B09] placeholder-[#B9A78D] focus:outline-none focus:border-[#2EA334] focus:ring-1 focus:ring-[#2EA334] transition-colors disabled:opacity-50 disabled:bg-[#EED4AC]/30 ${
             icon ? 'pl-10' : ''
-          } ${error ? 'border-[#FF5F6D]/50 focus:border-[#FF5F6D]' : ''} ${className}`}
+          } ${error ? 'border-[#B94A48]' : ''} ${className}`}
           {...props}
         />
       </div>
-      {error && <span className="text-xs text-[#FF5F6D] font-mono mt-0.5">{error}</span>}
+      {error && (
+        <p className="text-xs text-[#B94A48] mt-1">{error}</p>
+      )}
     </div>
   );
 };
@@ -54,23 +59,28 @@ export const Textarea: React.FC<TextareaProps> = ({
   id,
   ...props
 }) => {
-  const textareaId = id || (label ? label.toLowerCase().replace(/\s+/g, '-') : undefined);
+  const inputId = id || (label ? label.toLowerCase().replace(/\s+/g, '-') : undefined);
 
   return (
-    <div className="flex flex-col gap-1.5 w-full">
+    <div className="space-y-1.5 w-full">
       {label && (
-        <label htmlFor={textareaId} className="text-xs font-mono font-medium text-[#8992A7] uppercase tracking-wider">
+        <label 
+          htmlFor={inputId}
+          className="block text-xs font-medium text-[#5A4434]"
+        >
           {label}
         </label>
       )}
       <textarea
-        id={textareaId}
-        className={`w-full bg-[#0E1320] border border-white/10 rounded-lg p-4 text-sm text-[#F4F5F8] placeholder-[#5F687C] focus:outline-none focus:border-[#5B8CFF]/60 focus:ring-1 focus:ring-[#5B8CFF]/60 transition-colors resize-none ${
-          error ? 'border-[#FF5F6D]/50 focus:border-[#FF5F6D]' : ''
+        id={inputId}
+        className={`w-full bg-[#FFFDF9] border border-[#E3D5C0] rounded-2xl p-4 text-sm text-[#0D0B09] placeholder-[#B9A78D] focus:outline-none focus:border-[#2EA334] focus:ring-1 focus:ring-[#2EA334] transition-colors disabled:opacity-50 disabled:bg-[#EED4AC]/30 resize-y ${
+          error ? 'border-[#B94A48]' : ''
         } ${className}`}
         {...props}
       />
-      {error && <span className="text-xs text-[#FF5F6D] font-mono mt-0.5">{error}</span>}
+      {error && (
+        <p className="text-xs text-[#B94A48] mt-1">{error}</p>
+      )}
     </div>
   );
 };

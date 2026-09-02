@@ -4,22 +4,17 @@ import { SectionLabel } from '../ui/SectionLabel';
 
 export const RedditHeader: React.FC = () => {
   return (
-    <div className="space-y-4">
-      <SectionLabel icon={<Radio size={14} className="text-[#9B6DFF]" />}>
-        REDDIT NARRATIVE TELEMETRY
+    <div className="space-y-2 pb-4 border-b border-[#E3D5C0]">
+      <SectionLabel icon={<Radio size={14} className="text-[#2EA334]" />}>
+        Community research
       </SectionLabel>
 
-      <div className="space-y-1">
-        <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-[#F4F5F8] leading-[1.05]">
-          REDDIT NARRATIVE
-        </h1>
-        <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-[#9B6DFF] leading-[1.05]">
-          INTELLIGENCE
-        </h2>
-      </div>
+      <h1 className="text-3xl sm:text-4xl font-serif font-bold tracking-tight text-[#0D0B09]">
+        Reddit conversations
+      </h1>
 
-      <p className="text-base sm:text-lg text-[#8992A7] leading-relaxed max-w-2xl font-normal">
-        Monitor discussions across subreddits, identify emerging manipulation campaigns, and evaluate misinformation risk across community posts and comment threads.
+      <p className="text-base text-[#5A4434] max-w-2xl leading-relaxed font-sans">
+        Monitor discussions, identify emerging narratives, and evaluate misinformation risk across subreddits.
       </p>
     </div>
   );

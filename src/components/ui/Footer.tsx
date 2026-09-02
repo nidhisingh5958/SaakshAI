@@ -1,41 +1,21 @@
 import React from 'react';
-import { Shield } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="border-t border-white/5 py-8 bg-[#080B14] mt-auto">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 flex flex-col md:flex-row justify-between items-center gap-6">
-        
-        {/* Brand Meta */}
-        <div className="flex items-center gap-3">
-          <div className="w-7 h-7 rounded bg-[#5B8CFF]/10 border border-[#5B8CFF]/20 flex items-center justify-center">
-            <Shield size={14} className="text-[#5B8CFF]" />
-          </div>
-          <div>
-            <span className="text-xs font-semibold tracking-tight text-[#F4F5F8] block">
-              Saaksh AI Intelligence Platform
-            </span>
-            <span className="text-[11px] font-mono text-[#5F687C]">
-              © 2026 All rights reserved
-            </span>
-          </div>
+    <footer className="border-t border-[#E3D5C0] bg-[#FFFDF9] py-8 mt-16 text-xs text-[#5A4434]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="flex items-center gap-2">
+          <span className="font-bold text-[#0D0B09]">Saaksh AI</span>
+          <span>—</span>
+          <span>Understand information before you trust it</span>
         </div>
 
-        {/* Links & Attribution */}
-        <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
-          <div className="flex items-center gap-4 text-xs font-medium text-[#8992A7]">
-            <a href="#" className="hover:text-[#F4F5F8] transition-colors">Privacy</a>
-            <span className="text-white/10">•</span>
-            <a href="#" className="hover:text-[#F4F5F8] transition-colors">Terms</a>
-            <span className="text-white/10">•</span>
-            <a href="#" className="hover:text-[#F4F5F8] transition-colors">Documentation</a>
-          </div>
-
-          <div className="hidden sm:block h-3 w-px bg-white/10" />
-
-          <p className="text-xs font-mono text-[#5F687C]">
-            Engine: <span className="text-[#5B8CFF]">XLM-RoBERTa</span> & <span className="text-[#9B6DFF]">Gemini Pro</span>
-          </p>
+        <div className="flex items-center gap-6 font-mono text-[11px] text-[#B9A78D]">
+          <span>Intelligence Engine</span>
+          <span>•</span>
+          <span>Reddit Monitor</span>
+          <span>•</span>
+          <span>YouTube Monitor</span>
         </div>
       </div>
     </footer>

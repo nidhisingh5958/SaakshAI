@@ -12,41 +12,43 @@ export const YouTubeNarrativeClusters: React.FC<YouTubeNarrativeClustersProps> =
   if (clusters.length === 0) return null;
 
   return (
-    <div className="bg-[#0E1320] border border-[#FF5F6D]/30 rounded-2xl p-6 sm:p-8 space-y-6 animate-fade-in">
-      <div className="flex items-center justify-between border-b border-white/5 pb-4">
-        <SectionLabel icon={<AlertTriangle size={14} className="text-[#FF5F6D]" />}>
-          POTENTIAL MISINFORMATION TREND DETECTED ({clusters.length})
+    <div className="bg-[#FFFDF9] border border-[#E3D5C0] rounded-2xl p-6 sm:p-8 space-y-6 shadow-sm">
+      <div className="flex items-center justify-between border-b border-[#E3D5C0] pb-4">
+        <SectionLabel icon={<AlertTriangle size={14} className="text-[#B19C7A]" />}>
+          Emerging video trends ({clusters.length})
         </SectionLabel>
-        <span className="text-[11px] font-mono text-[#FF5F6D] bg-[#FF5F6D]/10 px-2 py-0.5 rounded uppercase">
-          HIGH RISK ALERT
+        <span className="text-xs font-mono text-[#B19C7A]">
+          Correlated media signals
         </span>
       </div>
 
-      <p className="text-xs text-[#8992A7] leading-relaxed">
-        Identified narrative clusters across multiple video uploads showing similar high-risk linguistic and emotional manipulation patterns.
-      </p>
+      <div className="divide-y divide-[#E3D5C0]">
+        {clusters.map((cluster, idx) => (
+          <div key={cluster.id} className="py-4 first:pt-0 last:pb-0 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div className="space-y-1">
+              <div className="flex items-center gap-3">
+                <span className="text-xs font-mono font-bold text-[#2EA334]">
+                  0{idx + 1}
+                </span>
+                <h4 className="text-base font-serif font-bold text-[#0D0B09]">
+                  {cluster.videoIds.length} correlated videos
+                </h4>
+              </div>
+              <p className="text-xs text-[#5A4434] pl-7 leading-relaxed">
+                {cluster.theme}
+              </p>
+            </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        {clusters.map((cluster) => (
-          <div key={cluster.id} className="p-5 bg-[#121827] border border-white/5 rounded-xl space-y-3">
-            <div className="flex items-center justify-between">
-              <span className="text-xs font-mono font-bold text-[#F4F5F8]">
-                {cluster.videoIds.length} Correlated Videos
-              </span>
+            <div className="flex items-center gap-6 self-start sm:self-auto pl-7 sm:pl-0">
+              <div className="text-right font-mono text-xs">
+                <span className="text-[#B9A78D] block text-[10px] uppercase">AVG RISK</span>
+                <span className="font-bold text-[#B94A48] text-sm">{Math.round(cluster.averageFakeRisk)}%</span>
+              </div>
               <RiskIndicator 
                 level={cluster.averageThreatLevel === 'critical' || cluster.averageThreatLevel === 'high' ? 'highRisk' : 'suspicious'} 
                 label={cluster.averageThreatLevel.toUpperCase()}
                 size="sm"
               />
-            </div>
-
-            <p className="text-xs text-[#8992A7] leading-relaxed">
-              {cluster.theme}
-            </p>
-
-            <div className="flex items-center justify-between pt-2 border-t border-white/5 text-xs font-mono">
-              <span className="text-[#5F687C]">AVG FAKE RISK</span>
-              <span className="text-[#FF5F6D] font-bold">{Math.round(cluster.averageFakeRisk)}%</span>
             </div>
           </div>
         ))}

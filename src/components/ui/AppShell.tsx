@@ -16,7 +16,7 @@ export const AppShell: React.FC<AppShellProps> = ({
   children,
 }) => {
   return (
-    <div className="min-h-screen bg-[#080B14] text-[#F4F5F8] flex flex-col font-sans selection:bg-[#5B8CFF]/20 selection:text-white">
+    <div className="min-h-screen bg-[#F4EBDD] text-[#0D0B09] flex flex-col font-sans selection:bg-[#2EA334]/20 selection:text-[#0D0B09]">
       {/* Navigation Header */}
       <Navigation 
         activeTab={activeTab} 
@@ -25,7 +25,7 @@ export const AppShell: React.FC<AppShellProps> = ({
       />
 
       {/* Main Workspace Container */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-12 py-8 sm:py-10">
+      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-12 py-8 sm:py-12">
         <div className="animate-fade-in">
           {children}
         </div>

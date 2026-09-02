@@ -1,14 +1,9 @@
 import React, { useState } from 'react';
 import {
   MessageSquare,
-  AlertTriangle,
-  ExternalLink,
   Users,
   AlertCircle,
-  Radio,
-  ArrowRight,
-  SlidersHorizontal,
-  Search
+  SlidersHorizontal
 } from 'lucide-react';
 import {
   RedditPost,
@@ -45,7 +40,7 @@ export const RedditMonitor: React.FC = () => {
 
   const handleMonitor = async () => {
     if (!subreddit.trim() && !keyword.trim()) {
-      setError('Please enter a subreddit or keyword');
+      setError('Please enter a subreddit or topic keyword');
       return;
     }
 
@@ -111,12 +106,12 @@ export const RedditMonitor: React.FC = () => {
   });
 
   return (
-    <div className="space-y-10 animate-fade-in text-[#F4F5F8]">
+    <div className="space-y-8 animate-fade-in text-[#0D0B09]">
       
-      {/* Editorial Header */}
+      {/* Header */}
       <RedditHeader />
 
-      {/* Configuration Input Workspace */}
+      {/* Query Bar Workspace */}
       <RedditMonitorConfig
         subreddit={subreddit}
         keyword={keyword}
@@ -130,93 +125,90 @@ export const RedditMonitor: React.FC = () => {
 
       {/* Error Alert Display */}
       {error && (
-        <div className="bg-[#FF5F6D]/10 border border-[#FF5F6D]/30 text-[#FF5F6D] p-5 rounded-2xl flex items-center justify-between gap-4 text-sm font-mono animate-fade-in">
-          <div className="flex items-center gap-3">
-            <AlertCircle size={20} className="flex-shrink-0" />
+        <div className="bg-[#B94A48]/12 border border-[#B94A48]/25 text-[#B94A48] p-4 rounded-2xl flex items-center justify-between gap-4 text-xs font-mono">
+          <div className="flex items-center gap-2">
+            <AlertCircle size={16} />
             <span>{error}</span>
           </div>
           <Button onClick={handleMonitor} variant="danger" size="sm">
-            Try Again
+            Try query again
           </Button>
         </div>
       )}
 
-      {/* Monitoring Active Telemetry Status & Narrative Clusters */}
+      {/* Active Results List */}
       {status === 'completed' && (
-        <div className="space-y-8">
+        <div className="space-y-6">
           
-          {/* Status Indicator Bar */}
-          <div className="flex items-center justify-between p-4 bg-[#0E1320] border border-white/10 rounded-xl">
-            <div className="flex items-center gap-3">
-              <span className="w-2 h-2 rounded-full bg-[#35D49A] animate-pulse" />
-              <span className="text-xs font-mono text-[#35D49A] uppercase tracking-wider font-bold">
-                MONITORING ACTIVE — {results.length} POSTS ANALYZED
+          {/* Status Bar */}
+          <div className="flex items-center justify-between p-4 bg-[#FFFDF9] border border-[#E3D5C0] rounded-xl text-xs">
+            <div className="flex items-center gap-2">
+              <span className="w-2.5 h-2.5 rounded-full bg-[#2EA334]" />
+              <span className="font-semibold text-[#0D0B09]">
+                Monitoring results — {results.length} posts analyzed
               </span>
             </div>
-            <div className="text-xs font-mono text-[#5F687C]">
-              TARGET: {subreddit ? `r/${subreddit}` : 'ALL'} {keyword ? `• "${keyword}"` : ''}
+            <div className="font-mono text-[#5A4434]">
+              Query: {subreddit ? `r/${subreddit}` : 'All subreddits'} {keyword ? `• "${keyword}"` : ''}
             </div>
           </div>
 
           {/* Emerging Narrative Clusters */}
           <RedditNarrativeClusters clusters={clusters} />
 
-          {/* Post Risk Analysis Matrix */}
-          <div className="bg-[#0E1320] border border-white/10 rounded-2xl overflow-hidden space-y-4">
+          {/* Research Feed List */}
+          <div className="bg-[#FFFDF9] border border-[#E3D5C0] rounded-2xl overflow-hidden shadow-sm">
             
-            {/* Table Header Controls */}
-            <div className="p-6 border-b border-white/5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-              <SectionLabel icon={<MessageSquare size={14} className="text-[#9B6DFF]" />}>
-                POST RISK ANALYSIS MATRIX ({results.length})
+            {/* Header Controls */}
+            <div className="p-6 border-b border-[#E3D5C0] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <SectionLabel icon={<MessageSquare size={14} className="text-[#2EA334]" />}>
+                Post research feed ({results.length})
               </SectionLabel>
 
-              <div className="flex items-center gap-3">
-                <SlidersHorizontal size={14} className="text-[#5F687C]" />
-                <span className="text-xs font-mono text-[#8992A7]">SORT:</span>
+              <div className="flex items-center gap-2 text-xs">
+                <SlidersHorizontal size={14} className="text-[#5A4434]" />
+                <span className="font-mono text-[#5A4434]">Sort:</span>
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value as any)}
-                  className="bg-[#121827] border border-white/10 rounded px-3 py-1.5 text-xs font-mono text-[#F4F5F8] focus:outline-none focus:border-[#9B6DFF]"
+                  className="bg-[#F4EBDD] border border-[#E3D5C0] rounded-lg px-3 py-1 text-xs text-[#0D0B09] focus:outline-none focus:border-[#2EA334]"
                 >
-                  <option value="fakeRisk">Fake Risk (High to Low)</option>
-                  <option value="credibility">Credibility (Low to High)</option>
-                  <option value="virality">Virality Risk (High to Low)</option>
+                  <option value="fakeRisk">Fake risk (high to low)</option>
+                  <option value="credibility">Credibility (low to high)</option>
+                  <option value="virality">Virality risk (high to low)</option>
                 </select>
               </div>
             </div>
 
-            {/* Post Rows List */}
-            <div className="divide-y divide-white/5">
+            {/* Editorial Research Rows */}
+            <div className="divide-y divide-[#E3D5C0]">
               {sortedResults.map((post) => (
                 <div
                   key={post.postId}
                   onClick={() => setSelectedPost(post)}
-                  className="p-5 hover:bg-[#121827] transition-colors cursor-pointer space-y-3 group"
+                  className="p-6 hover:bg-[#F4EBDD]/60 transition-colors cursor-pointer space-y-2.5 group"
                 >
                   <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
                     <div className="space-y-1.5 flex-1 min-w-0">
-                      <div className="flex items-center gap-3 text-xs font-mono text-[#8992A7]">
-                        <span className="text-[#9B6DFF] font-semibold flex items-center gap-1">
+                      <div className="flex items-center gap-2 text-xs font-mono text-[#5A4434]">
+                        <span className="text-[#2EA334] font-semibold flex items-center gap-1">
                           <Users size={12} />
                           r/{post.subreddit}
                         </span>
                         <span>•</span>
-                        <span className="flex items-center gap-1">
-                          <MessageSquare size={12} />
-                          {post.topComments.length} comments
-                        </span>
+                        <span>{post.topComments.length} comments</span>
                       </div>
-                      <h4 className="text-base font-semibold text-[#F4F5F8] group-hover:text-[#9B6DFF] transition-colors leading-snug">
+                      <h4 className="text-lg font-serif font-bold text-[#0D0B09] group-hover:text-[#2EA334] transition-colors leading-snug">
                         {post.title}
                       </h4>
                     </div>
 
-                    <div className="flex items-center gap-4 flex-shrink-0">
-                      <div className="text-right">
-                        <span className="text-[10px] font-mono text-[#5F687C] block uppercase">FAKE RISK</span>
-                        <span className={`text-lg font-mono font-bold ${
-                          post.fakeRiskScore >= 70 ? 'text-[#FF5F6D]' :
-                          post.fakeRiskScore >= 40 ? 'text-[#FFB84D]' : 'text-[#35D49A]'
+                    <div className="flex items-center gap-5 flex-shrink-0">
+                      <div className="text-right font-mono">
+                        <span className="text-[10px] text-[#5A4434] block uppercase">MISINFORMATION RISK</span>
+                        <span className={`text-base font-bold ${
+                          post.fakeRiskScore >= 70 ? 'text-[#B94A48]' :
+                          post.fakeRiskScore >= 40 ? 'text-[#B19C7A]' : 'text-[#2EA334]'
                         }`}>
                           {Math.round(post.fakeRiskScore)}%
                         </span>
@@ -230,22 +222,18 @@ export const RedditMonitor: React.FC = () => {
                     </div>
                   </div>
 
-                  {/* Emotional triggers summary row */}
-                  <div className="flex items-center justify-between pt-1 text-xs font-mono text-[#5F687C]">
+                  <div className="flex items-center justify-between pt-1 text-xs">
                     <div className="flex gap-2">
                       {post.emotionalTone.anger > 50 && (
-                        <span className="px-2 py-0.5 bg-[#FF5F6D]/10 text-[#FF5F6D] rounded text-[11px]">ANGER SIGNAL</span>
+                        <span className="px-2.5 py-0.5 bg-[#B94A48]/12 text-[#B94A48] rounded-full text-[11px] font-medium">Anger signal</span>
                       )}
                       {post.emotionalTone.fear > 50 && (
-                        <span className="px-2 py-0.5 bg-[#FFB84D]/10 text-[#FFB84D] rounded text-[11px]">FEAR SIGNAL</span>
-                      )}
-                      {post.emotionalTone.urgency > 50 && (
-                        <span className="px-2 py-0.5 bg-[#38D9FF]/10 text-[#38D9FF] rounded text-[11px]">URGENCY SIGNAL</span>
+                        <span className="px-2.5 py-0.5 bg-[#B19C7A]/20 text-[#5A4434] rounded-full text-[11px] font-medium">Fear signal</span>
                       )}
                     </div>
 
-                    <span className="text-[#5B8CFF] group-hover:underline flex items-center gap-1">
-                      Inspect Post →
+                    <span className="text-xs text-[#2EA334] font-semibold group-hover:underline">
+                      Inspect evidence →
                     </span>
                   </div>
                 </div>
@@ -261,20 +249,15 @@ export const RedditMonitor: React.FC = () => {
         <RedditPostInspector post={selectedPost} onClose={() => setSelectedPost(null)} />
       )}
 
-      {/* Analytical Empty State Guide */}
+      {/* Empty State Guide */}
       {status === 'idle' && (
-        <div className="bg-[#0E1320] border border-white/10 rounded-2xl p-8 sm:p-12 text-center space-y-4">
-          <div className="w-12 h-12 rounded-xl bg-[#9B6DFF]/10 border border-[#9B6DFF]/20 flex items-center justify-center text-[#9B6DFF] mx-auto">
-            <Radio size={24} />
-          </div>
-          <div className="space-y-1 max-w-md mx-auto">
-            <h3 className="text-lg font-bold text-[#F4F5F8]">
-              Target Subreddit or Topic Standby
-            </h3>
-            <p className="text-xs text-[#8992A7] leading-relaxed">
-              Enter a target subreddit or search topic above to begin telemetry monitoring. SaakshAI will analyze discussion posts, comment sentiment, linguistic manipulation, and emerging narrative clusters.
-            </p>
-          </div>
+        <div className="bg-[#FFFDF9] border border-[#E3D5C0] rounded-3xl p-10 text-center space-y-3 shadow-sm">
+          <h3 className="text-xl font-serif font-bold text-[#0D0B09]">
+            Ready for Reddit query
+          </h3>
+          <p className="text-sm text-[#5A4434] max-w-md mx-auto leading-relaxed">
+            Enter a target subreddit or search topic above to begin monitoring conversations, comment sentiment, and emerging narrative clusters.
+          </p>
         </div>
       )}
 

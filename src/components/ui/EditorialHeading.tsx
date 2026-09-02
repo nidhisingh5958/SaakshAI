@@ -1,29 +1,29 @@
 import React from 'react';
 
 export interface EditorialHeadingProps {
-  as?: 'h1' | 'h2' | 'h3' | 'h4';
-  variant?: 'display' | 'page' | 'section' | 'subsection';
+  level?: 'display' | 'page' | 'section' | 'subsection';
   children: React.ReactNode;
   className?: string;
+  as?: React.ElementType;
 }
 
 export const EditorialHeading: React.FC<EditorialHeadingProps> = ({
-  as = 'h2',
-  variant = 'section',
+  level = 'page',
   children,
   className = '',
+  as,
 }) => {
-  const Component = as;
+  const Component = as || (level === 'display' || level === 'page' ? 'h1' : level === 'section' ? 'h2' : 'h3');
 
-  const variantStyles = {
-    display: "text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[#F4F5F8] leading-[1.08]",
-    page: "text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-[#F4F5F8] leading-[1.15]",
-    section: "text-xl sm:text-2xl font-semibold text-[#F4F5F8] leading-[1.25]",
-    subsection: "text-base sm:text-lg font-semibold text-[#F4F5F8] leading-[1.35]",
+  const levelStyles = {
+    display: "text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#171717] leading-[1.1]",
+    page: "text-2xl sm:text-3xl font-bold tracking-tight text-[#171717] leading-snug",
+    section: "text-lg sm:text-xl font-bold tracking-tight text-[#171717] leading-snug",
+    subsection: "text-base font-semibold text-[#171717] leading-snug",
   };
 
   return (
-    <Component className={`${variantStyles[variant]} ${className}`}>
+    <Component className={`${levelStyles[level]} ${className}`}>
       {children}
     </Component>
   );

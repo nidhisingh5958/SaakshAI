@@ -12,8 +12,8 @@ export const SectionLabel: React.FC<SectionLabelProps> = ({
   className = '',
 }) => {
   return (
-    <div className={`inline-flex items-center gap-2 text-xs font-mono font-medium tracking-wider text-[#8992A7] uppercase ${className}`}>
-      {icon && <span className="text-[#5B8CFF] flex-shrink-0">{icon}</span>}
+    <div className={`inline-flex items-center gap-1.5 text-xs font-mono text-[#62605B] ${className}`}>
+      {icon && <span className="flex-shrink-0 text-[#315C4B]">{icon}</span>}
       <span>{children}</span>
     </div>
   );

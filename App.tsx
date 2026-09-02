@@ -15,7 +15,7 @@ import { IntelligenceHero } from './src/components/intelligence/IntelligenceHero
 import { AnalysisWorkspace } from './src/components/intelligence/AnalysisWorkspace';
 import { AnalysisMetadata } from './src/components/intelligence/AnalysisMetadata';
 import { ProcessingTelemetry } from './src/components/intelligence/ProcessingTelemetry';
-import { Activity, History, Info } from 'lucide-react';
+import { Activity, History, Download } from 'lucide-react';
 
 const App: React.FC = () => {
   const [activeTab, setActiveTab] = useState<TabType>('intelligence');
@@ -69,12 +69,12 @@ const App: React.FC = () => {
       ) : activeTab === 'youtube' ? (
         <YouTubeMonitor />
       ) : status === 'idle' || status === 'error' ? (
-        <div className="space-y-12 sm:space-y-16 py-4">
+        <div className="space-y-10 sm:space-y-12 py-2">
           
-          {/* Phase 3 Hero Experience */}
+          {/* Editorial Hero Experience */}
           <IntelligenceHero />
 
-          {/* Phase 3 Investigation Workspace */}
+          {/* Research Input Workspace */}
           <AnalysisWorkspace
             inputText={inputText}
             onInputChange={setInputText}
@@ -83,25 +83,25 @@ const App: React.FC = () => {
             error={error}
           />
 
-          {/* Phase 3 Product Telemetry Metadata */}
+          {/* Product Metadata Bar */}
           <AnalysisMetadata />
 
         </div>
       ) : status === 'processing' ? (
-        /* Phase 3 Processing Telemetry */
+        /* Processing Telemetry */
         <ProcessingTelemetry />
       ) : result ? (
         <div className="space-y-8 pb-12">
           {/* Result View Header Bar */}
-          <header className="flex flex-col md:flex-row md:items-center justify-between gap-6 bg-[#0E1320] p-6 rounded-xl border border-white/10 shadow-sm">
-            <div className="flex items-center gap-4">
-              <div className="w-10 h-10 rounded-lg bg-[#35D49A]/10 border border-[#35D49A]/30 flex items-center justify-center text-[#35D49A]">
-                <Activity size={20} />
+          <header className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-[#FFFFFF] p-5 sm:p-6 rounded-xl border border-[#DDD9D0] shadow-sm">
+            <div className="flex items-center gap-3">
+              <div className="w-9 h-9 rounded-md bg-[#315C4B]/10 border border-[#315C4B]/20 flex items-center justify-center text-[#315C4B]">
+                <Activity size={18} />
               </div>
               <div>
-                <h2 className="text-xl font-bold text-[#F4F5F8]">Analysis Intelligence Report</h2>
-                <p className="text-[#8992A7] text-xs font-mono mt-0.5">
-                  TARGET ID: TRX-{Math.random().toString(36).substr(2, 9).toUpperCase()} • {new Date().toLocaleString()}
+                <h2 className="text-lg font-bold text-[#171717]">Analysis briefing report</h2>
+                <p className="text-[#62605B] text-xs font-mono mt-0.5">
+                  Target ID: TRX-{Math.random().toString(36).substr(2, 7).toUpperCase()} • {new Date().toLocaleDateString()}
                 </p>
               </div>
             </div>
@@ -113,19 +113,19 @@ const App: React.FC = () => {
                 size="sm"
                 icon={<History size={14} />}
               >
-                New Analysis
+                New analysis
               </Button>
               <Button 
                 variant="primary"
                 size="sm"
-                icon={<Info size={14} />}
+                icon={<Download size={14} />}
               >
-                Export Intel
+                Export report
               </Button>
             </div>
           </header>
 
-          {/* Phase 4 Intelligence Report */}
+          {/* Intelligence Report */}
           <Dashboard result={result} onReset={reset} />
         </div>
       ) : null}

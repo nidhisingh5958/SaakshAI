@@ -6,37 +6,43 @@ export interface PageHeaderProps {
   label?: string;
   labelIcon?: React.ReactNode;
   title: React.ReactNode;
-  description?: React.ReactNode;
+  subtitle?: React.ReactNode;
   actions?: React.ReactNode;
-  className?: string;
 }
 
 export const PageHeader: React.FC<PageHeaderProps> = ({
   label,
   labelIcon,
   title,
-  description,
+  subtitle,
   actions,
-  className = '',
 }) => {
   return (
-    <div className={`flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-white/5 ${className}`}>
-      <div className="space-y-2 max-w-3xl">
-        {label && <SectionLabel icon={labelIcon}>{label}</SectionLabel>}
-        <EditorialHeading variant="page" as="h1">
-          {title}
-        </EditorialHeading>
-        {description && (
-          <p className="text-sm md:text-base text-[#8992A7] leading-relaxed">
-            {description}
-          </p>
+    <div className="space-y-3 pb-6 border-b border-[#DDD9D0]">
+      {label && (
+        <SectionLabel icon={labelIcon}>
+          {label}
+        </SectionLabel>
+      )}
+
+      <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+        <div className="space-y-1.5 max-w-3xl">
+          <EditorialHeading level="display">
+            {title}
+          </EditorialHeading>
+          {subtitle && (
+            <p className="text-base text-[#62605B] leading-relaxed">
+              {subtitle}
+            </p>
+          )}
+        </div>
+
+        {actions && (
+          <div className="flex items-center gap-3 flex-shrink-0">
+            {actions}
+          </div>
         )}
       </div>
-      {actions && (
-        <div className="flex items-center gap-3 flex-shrink-0">
-          {actions}
-        </div>
-      )}
     </div>
   );
 };
