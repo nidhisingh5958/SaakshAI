@@ -15,33 +15,33 @@ export const RiskIndicator: React.FC<RiskIndicatorProps> = ({
 }) => {
   const styles = {
     verified: {
-      dot: "bg-[#2EA334]",
-      text: "text-[#2EA334]",
-      badge: "bg-[#2EA334]/12 border-[#2EA334]/30 text-[#2EA334]",
+      dot: "bg-[#2E7D50]",
+      text: "text-[#2E7D50]",
+      badge: "bg-[#2E7D50]/10 border-[#2E7D50]/30 text-[#2E7D50]",
       defaultLabel: "Verified / Low risk",
     },
     suspicious: {
-      dot: "bg-[#B19C7A]",
-      text: "text-[#5A4434]",
-      badge: "bg-[#EED4AC]/50 border-[#B19C7A]/40 text-[#5A4434]",
+      dot: "bg-[#B0783C]",
+      text: "text-[#625E55]",
+      badge: "bg-[#B0783C]/10 border-[#B0783C]/30 text-[#625E55]",
       defaultLabel: "Watch / Moderate risk",
     },
     highRisk: {
-      dot: "bg-[#B94A48]",
-      text: "text-[#B94A48]",
-      badge: "bg-[#B94A48]/12 border-[#B94A48]/30 text-[#B94A48]",
+      dot: "bg-[#A83F3F]",
+      text: "text-[#A83F3F]",
+      badge: "bg-[#A83F3F]/10 border-[#A83F3F]/30 text-[#A83F3F]",
       defaultLabel: "High risk",
     },
     critical: {
-      dot: "bg-[#B94A48]",
-      text: "text-[#B94A48]",
-      badge: "bg-[#B94A48]/18 border-[#B94A48]/40 text-[#B94A48] font-semibold",
+      dot: "bg-[#A83F3F]",
+      text: "text-[#A83F3F]",
+      badge: "bg-[#A83F3F]/15 border-[#A83F3F]/35 text-[#A83F3F] font-semibold",
       defaultLabel: "Critical risk",
     },
     neutral: {
-      dot: "bg-[#B9A78D]",
-      text: "text-[#5A4434]",
-      badge: "bg-[#EED4AC]/30 border-[#E3D5C0] text-[#5A4434]",
+      dot: "bg-[#8C877C]",
+      text: "text-[#625E55]",
+      badge: "bg-[#EFE8DA] border-[#D8D1C4] text-[#625E55]",
       defaultLabel: "Neutral",
     },
   };
@@ -50,13 +50,13 @@ export const RiskIndicator: React.FC<RiskIndicatorProps> = ({
   const displayLabel = label || currentStyle.defaultLabel;
 
   const sizeClasses = {
-    sm: "px-2.5 py-0.5 text-xs gap-1.5",
-    md: "px-3 py-1 text-xs gap-2",
-    lg: "px-3.5 py-1.5 text-sm gap-2",
+    sm: "px-2 py-0.5 text-xs gap-1.5",
+    md: "px-2.5 py-1 text-xs gap-2",
+    lg: "px-3 py-1.5 text-sm gap-2",
   };
 
   return (
-    <span className={`inline-flex items-center rounded-full border font-medium ${sizeClasses[size]} ${currentStyle.badge}`}>
+    <span className={`inline-flex items-center rounded border font-medium ${sizeClasses[size]} ${currentStyle.badge}`}>
       <span className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${currentStyle.dot}`} />
       <span>{displayLabel}</span>
     </span>

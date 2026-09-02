@@ -1,17 +1,21 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 :root {
-  --color-bg: #F4EBDD;
-  --color-surface-primary: #FFFDF9;
-  --color-surface-secondary: #EED4AC;
-  --color-surface-dark: #181614;
-  --color-text-primary: #0D0B09;
-  --color-text-secondary: #5A4434;
-  --color-text-muted: #B9A78D;
-  --color-green: #2EA334;
-  --color-gold: #B19C7A;
-  --color-border-subtle: #E3D5C0;
-  --color-border-moderate: #B19C7A;
+  --color-bg: #F5F1E8;
+  --color-surface-primary: #FFFDF8;
+  --color-surface-secondary: #EFE8DA;
+  --color-surface-dark: #161614;
+  --color-surface-dark-green: #1D211C;
+  --color-text-primary: #11110F;
+  --color-text-secondary: #625E55;
+  --color-text-muted: #8C877C;
+  --color-primary-green: #2E7D50;
+  --color-dark-green: #1E4D37;
+  --color-warm-rust: #A65A43;
+  --color-warning-amber: #B0783C;
+  --color-high-risk: #A83F3F;
+  --color-border-subtle: #E5DEC3;
+  --color-border-moderate: #D8D1C4;
 }
 
 * {
@@ -44,16 +48,16 @@ html, body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #F4EBDD;
+  background: #F5F1E8;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #B19C7A;
+  background: #D8D1C4;
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #5A4434;
+  background: #8C877C;
 }
 
 /* Motion system & accessibility */

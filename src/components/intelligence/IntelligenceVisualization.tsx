@@ -2,65 +2,74 @@ import React from 'react';
 
 export const IntelligenceVisualization: React.FC = () => {
   return (
-    <div className="relative w-full select-none">
+    <div className="relative w-full my-8">
       
-      {/* Organic Rounded Editorial Image + Evidence Overlay Composition */}
-      <div className="relative rounded-3xl overflow-hidden shadow-md border border-[#E3D5C0] bg-[#FFFDF9] p-5 sm:p-6 space-y-4">
+      {/* Signature Investigative Evidence Document with Margin Notes */}
+      <div className="bg-[#FFFDF8] border border-[#D8D1C4] p-6 sm:p-10 space-y-6 shadow-xs relative">
         
-        {/* Editorial Article Header */}
-        <div className="flex items-center justify-between border-b border-[#E3D5C0] pb-3 text-xs font-mono text-[#5A4434]">
-          <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-[#2EA334]" />
-            <span className="font-semibold text-[#0D0B09]">Live Evidence Composition</span>
+        {/* Document Header */}
+        <div className="flex items-center justify-between border-b border-[#D8D1C4] pb-4 font-mono text-xs text-[#625E55]">
+          <div className="flex items-center gap-3">
+            <span className="w-2 h-2 rounded-full bg-[#2E7D50]" />
+            <span className="font-bold text-[#11110F] uppercase tracking-wider">
+              EXAMPLE INVESTIGATION / SAMPLE EVIDENCE
+            </span>
           </div>
-          <span className="text-[#B9A78D]">Investigation #894</span>
+          <span className="text-[#8C877C]">DOCUMENT #894-B</span>
         </div>
 
-        {/* Article Excerpt with Research Annotations */}
-        <div className="space-y-3 font-serif text-base sm:text-lg text-[#0D0B09] leading-relaxed">
-          <p>
-            "A newly leaked report claims that{' '}
-            <span className="bg-[#B94A48]/15 text-[#B94A48] font-sans text-sm font-semibold px-1.5 py-0.5 rounded border-b-2 border-[#B94A48] relative group cursor-pointer">
-              emergency measures will eliminate regional inflation within 24 hours
-              <span className="absolute -top-7 left-0 bg-[#B94A48] text-white text-[10px] font-mono uppercase px-2 py-0.5 rounded shadow-sm opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap">
-                Unsubstantiated claim
+        {/* Marked-up Text & Margin Notes Composition */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start pt-2">
+          
+          {/* Main Document Body */}
+          <div className="lg:col-span-8 space-y-4 font-serif text-lg sm:text-xl text-[#11110F] leading-relaxed">
+            <p>
+              "Leaked internal documents confirm that{' '}
+              <span className="bg-[#A83F3F]/10 border-b-2 border-[#A83F3F] font-sans text-base font-semibold px-1 py-0.5 relative group">
+                unprecedented emergency regulations will immediately halt inflation
+                <span className="absolute -top-7 left-0 bg-[#A83F3F] text-white text-[10px] font-mono uppercase px-2 py-0.5 shadow-xs whitespace-nowrap">
+                  Unsubstantiated Claim
+                </span>
               </span>
-            </span>
-            , forcing immediate market stabilization."
-          </p>
+              {' '}across regional markets within 24 hours."
+            </p>
 
-          <p className="font-sans text-xs text-[#5A4434] leading-normal pt-1">
-            <span className="bg-[#B19C7A]/20 text-[#0D0B09] font-medium px-1.5 py-0.5 rounded border-b-2 border-[#B19C7A]">
-              Urgency phrasing detected ("immediate", "within 24 hours")
-            </span>
-            {' '}without cited financial authority.
-          </p>
+            <p className="font-sans text-sm text-[#625E55] leading-relaxed">
+              Analysis indicates{' '}
+              <span className="border-b border-[#B0783C] text-[#11110F] font-medium">
+                high emotional urgency phrasing
+              </span>
+              {' '}without official regulatory verification.
+            </p>
+          </div>
+
+          {/* Margin Annotations Column */}
+          <div className="lg:col-span-4 space-y-3 pt-2 lg:pt-0 lg:border-l border-[#D8D1C4] lg:pl-6 text-xs font-mono">
+            <div className="p-3 bg-[#F5F1E8] border-l-2 border-[#A83F3F] space-y-1">
+              <span className="text-[#A83F3F] font-bold block uppercase">MARGIN NOTE 01</span>
+              <p className="text-[#625E55] font-sans">No matching regulatory filing in official press database.</p>
+            </div>
+
+            <div className="p-3 bg-[#F5F1E8] border-l-2 border-[#B0783C] space-y-1">
+              <span className="text-[#B0783C] font-bold block uppercase">MARGIN NOTE 02</span>
+              <p className="text-[#625E55] font-sans">Urgency timeframe ("24 hours") designed to trigger viral sharing.</p>
+            </div>
+
+            <div className="p-3 bg-[#F5F1E8] border-l-2 border-[#2E7D50] space-y-1">
+              <span className="text-[#2E7D50] font-bold block uppercase">SOURCE CHECK</span>
+              <p className="text-[#625E55] font-sans">Cross-referenced against 14 verified outlet wire feeds.</p>
+            </div>
+          </div>
+
         </div>
 
-        {/* Annotated Signal Markers Row */}
-        <div className="grid grid-cols-3 gap-2 pt-3 border-t border-[#E3D5C0] text-xs font-sans">
-          <div className="p-2.5 bg-[#F4EBDD] rounded-xl text-center space-y-0.5">
-            <span className="text-[10px] font-mono text-[#5A4434] uppercase block">CREDIBILITY</span>
-            <span className="font-mono font-bold text-[#B19C7A]">42%</span>
-          </div>
-          <div className="p-2.5 bg-[#F4EBDD] rounded-xl text-center space-y-0.5">
-            <span className="text-[10px] font-mono text-[#5A4434] uppercase block">MANIPULATION</span>
-            <span className="font-mono font-bold text-[#B94A48]">Elevated</span>
-          </div>
-          <div className="p-2.5 bg-[#F4EBDD] rounded-xl text-center space-y-0.5">
-            <span className="text-[10px] font-mono text-[#5A4434] uppercase block">CONSENSUS</span>
-            <span className="font-mono font-bold text-[#2EA334]">Refuted</span>
-          </div>
+        {/* Evidence Footer Summary */}
+        <div className="pt-4 border-t border-[#D8D1C4] flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs font-mono text-[#625E55]">
+          <span>VERDICT: UNSUBSTANTIATED TIMEFRAME & MANIPULATIVE FRAMING</span>
+          <span className="text-[#2E7D50]">CONSENSUS REFUTED</span>
         </div>
 
       </div>
-
-      {/* Floating Accent Badge */}
-      <div className="absolute -bottom-3 -right-3 bg-[#0D0B09] text-[#F4EBDD] px-4 py-2 rounded-full text-xs font-mono shadow-lg border border-[#B19C7A]/40 hidden sm:flex items-center gap-2">
-        <span className="w-2 h-2 rounded-full bg-[#2EA334] animate-pulse" />
-        <span>Sample Investigation</span>
-      </div>
-
     </div>
   );
 };

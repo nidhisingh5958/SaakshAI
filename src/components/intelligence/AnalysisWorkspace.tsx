@@ -21,18 +21,18 @@ export const AnalysisWorkspace: React.FC<AnalysisWorkspaceProps> = ({
   const charCount = inputText.length;
 
   return (
-    <div className="bg-[#FFFDF9] border border-[#E3D5C0] rounded-3xl p-6 sm:p-10 space-y-6 shadow-sm">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#E3D5C0] pb-4">
+    <div id="investigation-workspace" className="bg-[#FFFDF8] border border-[#D8D1C4] p-8 sm:p-12 space-y-6 shadow-xs my-8">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#D8D1C4] pb-4 font-sans">
         <div>
-          <h2 className="text-2xl font-serif font-bold text-[#0D0B09]">
-            What are you looking at?
+          <h2 className="text-3xl font-serif font-bold text-[#11110F]">
+            What do you want to investigate?
           </h2>
-          <p className="text-sm text-[#5A4434] mt-0.5">
-            Paste a claim, news article, social media post, or statement to evaluate its credibility.
+          <p className="text-sm text-[#625E55] mt-1">
+            Paste a claim, news article excerpt, social media post, or statement to analyze its validity.
           </p>
         </div>
 
-        <span className="text-xs font-mono text-[#B9A78D] self-end sm:self-auto">
+        <span className="text-xs font-mono text-[#8C877C] self-end sm:self-auto">
           {charCount} characters
         </span>
       </div>
@@ -42,13 +42,13 @@ export const AnalysisWorkspace: React.FC<AnalysisWorkspaceProps> = ({
           value={inputText}
           onChange={(e) => onInputChange(e.target.value)}
           placeholder="Paste content here (e.g. 'Leaked memo claims breakthrough medical treatment will eliminate memory loss in 24 hours...')"
-          rows={5}
+          rows={6}
           disabled={isProcessing}
-          className="font-sans text-base leading-relaxed p-4"
+          className="font-sans text-base leading-relaxed p-4 bg-[#FFFDF8] border-[#D8D1C4]"
         />
 
         {error && (
-          <div className="p-4 bg-[#B94A48]/12 border border-[#B94A48]/25 rounded-2xl text-[#B94A48] text-xs flex items-center justify-between gap-3 font-sans">
+          <div className="p-4 bg-[#A83F3F]/10 border border-[#A83F3F]/25 rounded text-[#A83F3F] text-xs flex items-center justify-between gap-3 font-sans">
             <div className="flex items-center gap-2">
               <AlertCircle size={16} />
               <span>{error}</span>
@@ -60,8 +60,8 @@ export const AnalysisWorkspace: React.FC<AnalysisWorkspaceProps> = ({
         )}
 
         <div className="flex items-center justify-between pt-2">
-          <span className="text-xs text-[#B9A78D]">
-            English and multilingual analysis supported
+          <span className="text-xs font-mono text-[#8C877C]">
+            MULTILINGUAL TRANSFORMER ENGINE READY
           </span>
 
           <Button
@@ -71,7 +71,7 @@ export const AnalysisWorkspace: React.FC<AnalysisWorkspaceProps> = ({
             size="lg"
             icon={isProcessing ? <Loader2 size={16} className="animate-spin" /> : undefined}
           >
-            {isProcessing ? 'Analyzing content...' : 'Start analysis'}
+            {isProcessing ? 'Analyzing content...' : 'Start an investigation'}
           </Button>
         </div>
       </div>

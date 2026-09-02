@@ -7,7 +7,6 @@ import {
   ChevronDown,
   ChevronUp,
   AlertCircle,
-  Video,
   SlidersHorizontal
 } from 'lucide-react';
 import {
@@ -28,7 +27,6 @@ import { YouTubeMonitorConfig } from '../src/components/youtube/YouTubeMonitorCo
 import { YouTubeNarrativeClusters } from '../src/components/youtube/YouTubeNarrativeClusters';
 import { YouTubeVideoInspector } from '../src/components/youtube/YouTubeVideoInspector';
 import { RiskIndicator } from '../src/components/ui/RiskIndicator';
-import { SectionLabel } from '../src/components/ui/SectionLabel';
 import { Button } from '../src/components/ui/Button';
 
 export const YouTubeMonitor: React.FC = () => {
@@ -136,7 +134,7 @@ export const YouTubeMonitor: React.FC = () => {
   };
 
   return (
-    <div className="space-y-8 animate-fade-in text-[#0D0B09]">
+    <div className="space-y-8 animate-fade-in text-[#11110F]">
       
       {/* Header */}
       <YouTubeHeader />
@@ -153,7 +151,7 @@ export const YouTubeMonitor: React.FC = () => {
 
       {/* Error Alert Display */}
       {error && (
-        <div className="bg-[#B94A48]/12 border border-[#B94A48]/25 text-[#B94A48] p-4 rounded-2xl flex items-center justify-between gap-4 text-xs font-mono">
+        <div className="bg-[#A83F3F]/10 border border-[#A83F3F]/25 text-[#A83F3F] p-4 rounded flex items-center justify-between gap-4 text-xs font-mono">
           <div className="flex items-center gap-2">
             <AlertCircle size={16} />
             <span>{error}</span>
@@ -169,14 +167,14 @@ export const YouTubeMonitor: React.FC = () => {
         <div className="space-y-6">
           
           {/* Status Bar */}
-          <div className="flex items-center justify-between p-4 bg-[#FFFDF9] border border-[#E3D5C0] rounded-xl text-xs">
+          <div className="flex items-center justify-between p-4 bg-[#FFFDF8] border border-[#D8D1C4] text-xs font-sans">
             <div className="flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-[#2EA334]" />
-              <span className="font-semibold text-[#0D0B09]">
+              <span className="w-2.5 h-2.5 rounded-full bg-[#2E7D50]" />
+              <span className="font-semibold text-[#11110F]">
                 Monitoring results — {results.length} videos analyzed
               </span>
             </div>
-            <div className="font-mono text-[#5A4434]">
+            <div className="font-mono text-[#625E55]">
               Query: "{keyword}"
             </div>
           </div>
@@ -185,30 +183,30 @@ export const YouTubeMonitor: React.FC = () => {
           <YouTubeNarrativeClusters clusters={clusters} />
 
           {/* Video Research List */}
-          <div className="bg-[#FFFDF9] border border-[#E3D5C0] rounded-2xl overflow-hidden shadow-sm">
+          <div className="bg-[#FFFDF8] border border-[#D8D1C4] shadow-xs">
             
             {/* Header Controls */}
-            <div className="p-6 border-b border-[#E3D5C0] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-              <SectionLabel icon={<Video size={14} className="text-[#2EA334]" />}>
+            <div className="p-6 border-b border-[#D8D1C4] flex flex-col sm:flex-row sm:items-center justify-between gap-3 font-sans">
+              <h3 className="text-xl font-serif font-bold text-[#11110F]">
                 Video research feed ({results.length})
-              </SectionLabel>
+              </h3>
 
               <div className="flex items-center gap-2 text-xs">
-                <SlidersHorizontal size={14} className="text-[#5A4434]" />
-                <span className="font-mono text-[#5A4434]">Sort:</span>
+                <SlidersHorizontal size={14} className="text-[#625E55]" />
+                <span className="font-mono text-[#625E55]">Sort:</span>
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value as any)}
-                  className="bg-[#F4EBDD] border border-[#E3D5C0] rounded-lg px-3 py-1 text-xs text-[#0D0B09] focus:outline-none focus:border-[#2EA334]"
+                  className="bg-[#F5F1E8] border border-[#D8D1C4] px-3 py-1 text-xs text-[#11110F] focus:outline-none focus:border-[#2E7D50]"
                 >
-                  <option value="fakeRisk">Fake risk</option>
+                  <option value="fakeRisk">Misinformation risk</option>
                   <option value="credibility">Credibility</option>
-                  <option value="virality">Virality</option>
+                  <option value="virality">Virality risk</option>
                   <option value="views">Views</option>
                 </select>
                 <button
                   onClick={() => setSortOrder(sortOrder === 'desc' ? 'asc' : 'desc')}
-                  className="p-1 bg-[#F4EBDD] border border-[#E3D5C0] rounded text-[#5A4434] hover:text-[#0D0B09] transition-colors"
+                  className="p-1 bg-[#F5F1E8] border border-[#D8D1C4] text-[#625E55] hover:text-[#11110F] transition-colors"
                 >
                   {sortOrder === 'desc' ? <ChevronDown size={14} /> : <ChevronUp size={14} />}
                 </button>
@@ -216,23 +214,23 @@ export const YouTubeMonitor: React.FC = () => {
             </div>
 
             {/* Video List Rows */}
-            <div className="divide-y divide-[#E3D5C0]">
+            <div className="divide-y divide-[#D8D1C4]">
               {getSortedResults().map((video) => (
                 <div
                   key={video.videoId}
                   onClick={() => setSelectedVideo(video)}
-                  className="p-6 hover:bg-[#F4EBDD]/60 transition-colors cursor-pointer space-y-2 group"
+                  className="p-6 hover:bg-[#F5F1E8]/60 transition-colors cursor-pointer space-y-2 group"
                 >
                   <div className="flex flex-col sm:flex-row gap-5">
                     
-                    {/* Organic Rounded Thumbnail Anchor */}
+                    {/* Media Thumbnail Preview Anchor */}
                     <div className="relative flex-shrink-0">
                       <img
                         src={video.thumbnailUrl}
                         alt={video.title}
-                        className="w-full sm:w-48 h-30 object-cover rounded-2xl border border-[#E3D5C0]"
+                        className="w-full sm:w-48 h-30 object-cover border border-[#D8D1C4]"
                       />
-                      <div className="absolute bottom-2 right-2 bg-[#0D0B09]/80 backdrop-blur-xs px-2 py-0.5 rounded-full text-[10px] font-mono text-white">
+                      <div className="absolute bottom-2 right-2 bg-[#11110F]/80 backdrop-blur-xs px-2 py-0.5 text-[10px] font-mono text-white">
                         <Eye size={10} className="inline mr-1" />
                         {formatNumber(video.viewCount)}
                       </div>
@@ -241,7 +239,7 @@ export const YouTubeMonitor: React.FC = () => {
                     {/* Metadata & Scores */}
                     <div className="flex-1 min-w-0 space-y-2">
                       <div className="flex items-start justify-between gap-4">
-                        <h4 className="text-lg font-serif font-bold text-[#0D0B09] group-hover:text-[#2EA334] transition-colors leading-snug line-clamp-2">
+                        <h4 className="text-lg font-serif font-bold text-[#11110F] group-hover:text-[#2E7D50] transition-colors leading-snug line-clamp-2">
                           {video.title}
                         </h4>
                         <RiskIndicator 
@@ -251,8 +249,8 @@ export const YouTubeMonitor: React.FC = () => {
                         />
                       </div>
 
-                      <div className="flex items-center gap-3 text-xs font-mono text-[#5A4434]">
-                        <span className="text-[#2EA334] font-semibold flex items-center gap-1">
+                      <div className="flex items-center gap-3 text-xs font-mono text-[#625E55]">
+                        <span className="text-[#2E7D50] font-semibold flex items-center gap-1">
                           <Users size={12} />
                           {video.channelTitle}
                         </span>
@@ -269,22 +267,22 @@ export const YouTubeMonitor: React.FC = () => {
                       </div>
 
                       <div className="grid grid-cols-3 gap-3 pt-1">
-                        <div className="p-2.5 bg-[#F4EBDD] rounded-xl border border-[#E3D5C0]">
-                          <span className="text-[10px] font-mono text-[#5A4434] uppercase block">CREDIBILITY</span>
-                          <span className="text-xs font-mono font-bold text-[#2EA334]">{video.credibilityScore}%</span>
+                        <div className="p-2.5 bg-[#F5F1E8] border border-[#D8D1C4]">
+                          <span className="text-[10px] font-mono text-[#625E55] uppercase block">CREDIBILITY</span>
+                          <span className="text-xs font-mono font-bold text-[#2E7D50]">{video.credibilityScore}%</span>
                         </div>
-                        <div className="p-2.5 bg-[#F4EBDD] rounded-xl border border-[#E3D5C0]">
-                          <span className="text-[10px] font-mono text-[#5A4434] uppercase block">MISINFORMATION RISK</span>
-                          <span className="text-xs font-mono font-bold text-[#B94A48]">{video.fakeRiskScore}%</span>
+                        <div className="p-2.5 bg-[#F5F1E8] border border-[#D8D1C4]">
+                          <span className="text-[10px] font-mono text-[#625E55] uppercase block">MISINFORMATION RISK</span>
+                          <span className="text-xs font-mono font-bold text-[#A83F3F]">{video.fakeRiskScore}%</span>
                         </div>
-                        <div className="p-2.5 bg-[#F4EBDD] rounded-xl border border-[#E3D5C0]">
-                          <span className="text-[10px] font-mono text-[#5A4434] uppercase block">VIRALITY</span>
-                          <span className="text-xs font-mono font-bold text-[#B19C7A]">{video.viralityRisk.score}%</span>
+                        <div className="p-2.5 bg-[#F5F1E8] border border-[#D8D1C4]">
+                          <span className="text-[10px] font-mono text-[#625E55] uppercase block">VIRALITY</span>
+                          <span className="text-xs font-mono font-bold text-[#B0783C]">{video.viralityRisk.score}%</span>
                         </div>
                       </div>
 
                       <div className="flex items-center justify-end pt-1">
-                        <span className="text-xs text-[#2EA334] font-semibold group-hover:underline">
+                        <span className="text-xs text-[#2E7D50] font-semibold group-hover:underline">
                           Inspect video evidence →
                         </span>
                       </div>
@@ -306,11 +304,11 @@ export const YouTubeMonitor: React.FC = () => {
 
       {/* Empty State */}
       {status === 'idle' && (
-        <div className="bg-[#FFFDF9] border border-[#E3D5C0] rounded-3xl p-10 text-center space-y-3 shadow-sm">
-          <h3 className="text-xl font-serif font-bold text-[#0D0B09]">
+        <div className="bg-[#FFFDF8] border border-[#D8D1C4] p-10 text-center space-y-3 shadow-xs">
+          <h3 className="text-2xl font-serif font-bold text-[#11110F]">
             Ready for YouTube query
           </h3>
-          <p className="text-sm text-[#5A4434] max-w-md mx-auto leading-relaxed">
+          <p className="text-sm text-[#625E55] max-w-md mx-auto leading-relaxed font-sans">
             Enter a search topic or keyword above to analyze video content, audience comments, and emotional manipulation patterns.
           </p>
         </div>

@@ -1,77 +1,110 @@
 import React from 'react';
 import { IntelligenceVisualization } from './IntelligenceVisualization';
+import { Button } from '../ui/Button';
+import { ArrowRight } from 'lucide-react';
 
 export const IntelligenceHero: React.FC = () => {
+  const scrollToWorkspace = () => {
+    const el = document.getElementById('investigation-workspace');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
-    <div className="space-y-16 py-4 sm:py-8">
+    <div className="space-y-20 py-6 sm:py-10">
       
-      {/* Editorial Hero Layout Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-        
-        {/* Left Column: Expressive Serif Headline & Intro */}
-        <div className="lg:col-span-7 space-y-6">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#EED4AC]/50 border border-[#B19C7A]/40 text-[#5A4434] text-xs font-medium">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#2EA334]" />
-            <span>Fact-checking & narrative research</span>
-          </div>
+      {/* Full-Width Editorial Masthead Hero */}
+      <div className="space-y-8 border-b border-[#D8D1C4] pb-16">
+        <div className="flex items-center gap-3 text-xs font-mono text-[#8C877C] uppercase tracking-wider">
+          <span>INTELLIGENCE / 01</span>
+          <span>—</span>
+          <span>INVESTIGATIVE RESEARCH DESK</span>
+        </div>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-[#0D0B09] leading-[1.08] tracking-tight">
-            Read between <br className="hidden sm:inline" />
-            the <span className="italic font-normal text-[#2EA334]">claims.</span>
-          </h1>
+        <h1 className="text-5xl sm:text-7xl lg:text-8xl font-serif font-extrabold text-[#11110F] leading-[0.98] tracking-tight">
+          Information <br />
+          moves fast. <br />
+          <span className="italic font-normal text-[#2E7D50]">We look closer.</span>
+        </h1>
 
-          <p className="text-base sm:text-lg text-[#5A4434] leading-relaxed max-w-xl font-sans">
-            SaakshAI examines claims, language, emotional manipulation, and narrative patterns to help you understand whether information deserves your trust.
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-end pt-4">
+          <p className="md:col-span-8 text-lg sm:text-xl text-[#625E55] leading-relaxed font-sans max-w-2xl">
+            SaakshAI investigates claims, sources, language and narratives across the information people share.
           </p>
-        </div>
 
-        {/* Right Column: Asymmetrical Evidence Composition */}
-        <div className="lg:col-span-5">
-          <IntelligenceVisualization />
+          <div className="md:col-span-4 flex items-center gap-4 flex-wrap">
+            <Button onClick={scrollToWorkspace} variant="primary" size="lg" icon={<ArrowRight size={16} />}>
+              Investigate a claim
+            </Button>
+          </div>
         </div>
-
       </div>
 
-      {/* Storytelling Problem Statement Section */}
-      <div className="bg-[#181614] text-[#F4EBDD] rounded-3xl p-8 sm:p-12 space-y-6">
-        <div className="max-w-3xl space-y-3">
-          <span className="text-xs font-mono text-[#B19C7A] uppercase tracking-wider">
-            THE INFORMATION CHALLENGE
-          </span>
-          <h2 className="text-2xl sm:text-4xl font-serif font-bold leading-tight">
-            Information moves fast. Context doesn't.
+      {/* Section 01: The Information Problem */}
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-8 py-10 border-b border-[#D8D1C4] items-start">
+        <div className="md:col-span-4 text-xs font-mono text-[#8C877C] uppercase tracking-wider">
+          01 / THE INFORMATION PROBLEM
+        </div>
+
+        <div className="md:col-span-8 space-y-6">
+          <h2 className="text-3xl sm:text-5xl font-serif font-bold text-[#11110F] leading-tight">
+            A claim can be true and still tell the wrong story.
           </h2>
-          <p className="text-sm sm:text-base text-[#B9A78D] leading-relaxed">
-            SaakshAI helps you slow down long enough to understand what a claim actually says, where it comes from, and how it is being framed across digital channels.
+
+          <p className="text-base sm:text-lg text-[#625E55] leading-relaxed">
+            Misinformation is rarely pure fiction. It spreads through selective framing, omitted context, urgent emotional triggers, and coordinated narrative amplification across social channels.
           </p>
         </div>
+      </div>
 
-        {/* 3 Core Capabilities */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6 border-t border-white/10 text-xs">
-          <div className="space-y-2">
-            <span className="text-sm font-mono text-[#2EA334] font-bold">01</span>
-            <h4 className="text-sm font-bold text-[#FFFDF9]">VERIFY THE CLAIM</h4>
-            <p className="text-[#B9A78D] leading-relaxed">
-              Check claims against trusted news sources and verified factual consensus.
+      {/* Section 02: How We Investigate (Methodology Rows) */}
+      <div className="space-y-8 py-10 border-b border-[#D8D1C4]">
+        <div className="text-xs font-mono text-[#8C877C] uppercase tracking-wider">
+          02 / HOW WE INVESTIGATE
+        </div>
+
+        <div className="divide-y divide-[#D8D1C4]">
+          <div className="py-6 first:pt-0 grid grid-cols-1 md:grid-cols-12 gap-4 items-baseline">
+            <span className="md:col-span-2 font-mono text-xl font-bold text-[#2E7D50]">01 / CLAIM</span>
+            <h3 className="md:col-span-4 text-xl font-bold text-[#11110F]">What exactly is being said?</h3>
+            <p className="md:col-span-6 text-sm text-[#625E55] leading-relaxed">
+              Isolate core statements and verify factual consistency against trusted news consensus.
             </p>
           </div>
 
-          <div className="space-y-2">
-            <span className="text-sm font-mono text-[#2EA334] font-bold">02</span>
-            <h4 className="text-sm font-bold text-[#FFFDF9]">READ THE LANGUAGE</h4>
-            <p className="text-[#B9A78D] leading-relaxed">
-              Detect urgency, manipulation, emotional framing, and suspicious phrasing.
+          <div className="py-6 grid grid-cols-1 md:grid-cols-12 gap-4 items-baseline">
+            <span className="md:col-span-2 font-mono text-xl font-bold text-[#2E7D50]">02 / SOURCE</span>
+            <h3 className="md:col-span-4 text-xl font-bold text-[#11110F]">Where did it come from?</h3>
+            <p className="md:col-span-6 text-sm text-[#625E55] leading-relaxed">
+              Trace original publication sources, author credibility ratings, and cross-reference citations.
             </p>
           </div>
 
-          <div className="space-y-2">
-            <span className="text-sm font-mono text-[#2EA334] font-bold">03</span>
-            <h4 className="text-sm font-bold text-[#FFFDF9]">UNDERSTAND THE NARRATIVE</h4>
-            <p className="text-[#B9A78D] leading-relaxed">
-              Identify virality patterns and emerging narrative clusters across Reddit and YouTube.
+          <div className="py-6 grid grid-cols-1 md:grid-cols-12 gap-4 items-baseline">
+            <span className="md:col-span-2 font-mono text-xl font-bold text-[#2E7D50]">03 / LANGUAGE</span>
+            <h3 className="md:col-span-4 text-xl font-bold text-[#11110F]">How is it being framed?</h3>
+            <p className="md:col-span-6 text-sm text-[#625E55] leading-relaxed">
+              Detect emotional manipulation, urgency phrasing, sensationalism, and biased linguistic patterns.
+            </p>
+          </div>
+
+          <div className="py-6 last:pb-0 grid grid-cols-1 md:grid-cols-12 gap-4 items-baseline">
+            <span className="md:col-span-2 font-mono text-xl font-bold text-[#2E7D50]">04 / NARRATIVE</span>
+            <h3 className="md:col-span-4 text-xl font-bold text-[#11110F]">How is it spreading?</h3>
+            <p className="md:col-span-6 text-sm text-[#625E55] leading-relaxed">
+              Track virality indicators and emerging narrative clusters across Reddit and YouTube communities.
             </p>
           </div>
         </div>
+      </div>
+
+      {/* Section 03: Signature Visual Language — Example Investigation */}
+      <div className="space-y-4 py-6">
+        <div className="text-xs font-mono text-[#8C877C] uppercase tracking-wider">
+          03 / SIGNATURE EVIDENCE MARKUP
+        </div>
+        <IntelligenceVisualization />
       </div>
 
     </div>

@@ -27,7 +27,7 @@ export const RedditMonitorConfig: React.FC<RedditMonitorConfigProps> = ({
   const isLoading = isFetching || isAnalyzing;
 
   return (
-    <div className="bg-[#FFFDF9] border border-[#E3D5C0] rounded-2xl p-6 sm:p-8 space-y-4 shadow-sm">
+    <div className="bg-[#FFFDF8] border border-[#D8D1C4] p-6 sm:p-8 space-y-4 shadow-xs">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <Input
           label="Subreddit (optional)"

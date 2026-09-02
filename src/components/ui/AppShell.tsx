@@ -16,8 +16,8 @@ export const AppShell: React.FC<AppShellProps> = ({
   children,
 }) => {
   return (
-    <div className="min-h-screen bg-[#F4EBDD] text-[#0D0B09] flex flex-col font-sans selection:bg-[#2EA334]/20 selection:text-[#0D0B09]">
-      {/* Navigation Header */}
+    <div className="min-h-screen bg-[#F5F1E8] text-[#11110F] flex flex-col font-sans selection:bg-[#2E7D50]/20 selection:text-[#11110F]">
+      {/* Newspaper / Publication Masthead Navigation */}
       <Navigation 
         activeTab={activeTab} 
         onTabChange={onTabChange} 
@@ -31,7 +31,7 @@ export const AppShell: React.FC<AppShellProps> = ({
         </div>
       </main>
 
-      {/* Footer */}
+      {/* Publication Footer */}
       <Footer />
     </div>
   );

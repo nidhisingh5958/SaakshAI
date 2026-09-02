@@ -69,7 +69,7 @@ const App: React.FC = () => {
       ) : activeTab === 'youtube' ? (
         <YouTubeMonitor />
       ) : status === 'idle' || status === 'error' ? (
-        <div className="space-y-10 sm:space-y-12 py-2">
+        <div className="space-y-12 sm:space-y-16 py-2">
           
           {/* Editorial Hero Experience */}
           <IntelligenceHero />
@@ -93,15 +93,15 @@ const App: React.FC = () => {
       ) : result ? (
         <div className="space-y-8 pb-12">
           {/* Result View Header Bar */}
-          <header className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-[#FFFFFF] p-5 sm:p-6 rounded-xl border border-[#DDD9D0] shadow-sm">
+          <header className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-[#FFFDF8] p-6 border border-[#D8D1C4] shadow-xs">
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-md bg-[#315C4B]/10 border border-[#315C4B]/20 flex items-center justify-center text-[#315C4B]">
-                <Activity size={18} />
+              <div className="w-10 h-10 rounded-full bg-[#2E7D50]/15 flex items-center justify-center text-[#2E7D50]">
+                <Activity size={20} />
               </div>
               <div>
-                <h2 className="text-lg font-bold text-[#171717]">Analysis briefing report</h2>
-                <p className="text-[#62605B] text-xs font-mono mt-0.5">
-                  Target ID: TRX-{Math.random().toString(36).substr(2, 7).toUpperCase()} • {new Date().toLocaleDateString()}
+                <h2 className="text-xl font-serif font-bold text-[#11110F]">Investigation Briefing Report</h2>
+                <p className="text-[#625E55] text-xs font-mono mt-0.5">
+                  TARGET ID: TRX-{Math.random().toString(36).substr(2, 7).toUpperCase()} • {new Date().toLocaleDateString()}
                 </p>
               </div>
             </div>
@@ -113,14 +113,14 @@ const App: React.FC = () => {
                 size="sm"
                 icon={<History size={14} />}
               >
-                New analysis
+                New investigation
               </Button>
               <Button 
                 variant="primary"
                 size="sm"
                 icon={<Download size={14} />}
               >
-                Export report
+                Export briefing
               </Button>
             </div>
           </header>

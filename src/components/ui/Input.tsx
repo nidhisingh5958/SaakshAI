@@ -21,27 +21,27 @@ export const Input: React.FC<InputProps> = ({
       {label && (
         <label 
           htmlFor={inputId}
-          className="block text-xs font-medium text-[#5A4434]"
+          className="block text-xs font-medium text-[#625E55]"
         >
           {label}
         </label>
       )}
       <div className="relative flex items-center w-full">
         {icon && (
-          <span className="absolute left-3.5 text-[#B9A78D] pointer-events-none">
+          <span className="absolute left-3.5 text-[#8C877C] pointer-events-none">
             {icon}
           </span>
         )}
         <input
           id={inputId}
-          className={`w-full bg-[#FFFDF9] border border-[#E3D5C0] rounded-xl px-4 py-2.5 text-sm text-[#0D0B09] placeholder-[#B9A78D] focus:outline-none focus:border-[#2EA334] focus:ring-1 focus:ring-[#2EA334] transition-colors disabled:opacity-50 disabled:bg-[#EED4AC]/30 ${
+          className={`w-full bg-[#FFFDF8] border border-[#D8D1C4] rounded px-4 py-2.5 text-sm text-[#11110F] placeholder-[#8C877C] focus:outline-none focus:border-[#2E7D50] focus:ring-1 focus:ring-[#2E7D50] transition-colors disabled:opacity-50 disabled:bg-[#EFE8DA] ${
             icon ? 'pl-10' : ''
-          } ${error ? 'border-[#B94A48]' : ''} ${className}`}
+          } ${error ? 'border-[#A83F3F]' : ''} ${className}`}
           {...props}
         />
       </div>
       {error && (
-        <p className="text-xs text-[#B94A48] mt-1">{error}</p>
+        <p className="text-xs text-[#A83F3F] mt-1">{error}</p>
       )}
     </div>
   );
@@ -66,20 +66,20 @@ export const Textarea: React.FC<TextareaProps> = ({
       {label && (
         <label 
           htmlFor={inputId}
-          className="block text-xs font-medium text-[#5A4434]"
+          className="block text-xs font-medium text-[#625E55]"
         >
           {label}
         </label>
       )}
       <textarea
         id={inputId}
-        className={`w-full bg-[#FFFDF9] border border-[#E3D5C0] rounded-2xl p-4 text-sm text-[#0D0B09] placeholder-[#B9A78D] focus:outline-none focus:border-[#2EA334] focus:ring-1 focus:ring-[#2EA334] transition-colors disabled:opacity-50 disabled:bg-[#EED4AC]/30 resize-y ${
-          error ? 'border-[#B94A48]' : ''
+        className={`w-full bg-[#FFFDF8] border border-[#D8D1C4] rounded-lg p-4 text-sm text-[#11110F] placeholder-[#8C877C] focus:outline-none focus:border-[#2E7D50] focus:ring-1 focus:ring-[#2E7D50] transition-colors disabled:opacity-50 disabled:bg-[#EFE8DA] resize-y ${
+          error ? 'border-[#A83F3F]' : ''
         } ${className}`}
         {...props}
       />
       {error && (
-        <p className="text-xs text-[#B94A48] mt-1">{error}</p>
+        <p className="text-xs text-[#A83F3F] mt-1">{error}</p>
       )}
     </div>
   );
